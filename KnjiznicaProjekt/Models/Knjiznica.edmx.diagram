@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a919576a8584154a8e3a9c649b0ed76" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="KnjiznicaModel.Clan" Width="1.5" PointX="9" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnjiznicaModel.Knjiga" Width="1.5" PointX="12.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnjiznicaModel.KorisnikKnjiga" Width="1.5" PointX="10.125" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnjiznicaModel.KorisnikRadionica" Width="1.5" PointX="4.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnjiznicaModel.Radionica" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnjiznicaModel.Zaposlenik" Width="1.5" PointX="4.125" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="KnjiznicaModel.FK_KorisnikKnjiga_Knjiga" ManuallyRouted="false" />
+        <AssociationConnector Association="KnjiznicaModel.FK_KorisnikRadionica_Radionica" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KnjiznicaModel.Korisnik" Width="1.5" PointX="6.625" PointY="2.125" />
+        <EntityTypeShape EntityType="KnjiznicaModel.sysdiagrams" Width="1.5" PointX="9.125" PointY="6.375" />
+        <AssociationConnector Association="KnjiznicaModel.FK_Clanarina_Korisnici" />
+        <AssociationConnector Association="KnjiznicaModel.FK_KorisnikKnjiga_Korisnik" />
+        <AssociationConnector Association="KnjiznicaModel.FK_KorisnikRadionica_Korisnici" />
+        <AssociationConnector Association="KnjiznicaModel.FK_Zaposlenici_Korisnici" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

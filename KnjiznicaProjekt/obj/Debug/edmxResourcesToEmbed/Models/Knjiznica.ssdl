@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KnjiznicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clan">
+    <Key>
+      <PropertyRef Name="KorisnikId" />
+    </Key>
+    <Property Name="KorisnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DatumUclanjivanja" Type="date" Nullable="false" />
+    <Property Name="DatumIsteka" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Knjiga">
+    <Key>
+      <PropertyRef Name="KnjigaID" />
+    </Key>
+    <Property Name="KnjigaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naslov" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Autor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ISBN" Type="varchar" MaxLength="17" Nullable="false" />
+    <Property Name="BrojPrimjeraka" Type="int" Nullable="false" />
+    <Property Name="Kategorija" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Posudba" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Korisnik">
+    <Key>
+      <PropertyRef Name="KorisnikID" />
+    </Key>
+    <Property Name="KorisnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OIB" Type="varchar" MaxLength="11" />
+    <Property Name="Adresa" Type="nvarchar(max)" />
+    <Property Name="DatumRodenja" Type="date" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Spol" Type="nvarchar(max)" />
+    <Property Name="StatusKorisnika" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BrojKnjiga" Type="int" Nullable="false" />
+    <Property Name="BrojTelefona" Type="nvarchar(max)" />
+    <Property Name="BrojIskaznice" Type="int" Nullable="false" />
+    <Property Name="PIN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="KorisnickoIme" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KorisnikKnjiga">
+    <Key>
+      <PropertyRef Name="KorisnikKnjigaID" />
+    </Key>
+    <Property Name="KorisnikKnjigaID" Type="int" Nullable="false" />
+    <Property Name="KorisnikID" Type="int" Nullable="false" />
+    <Property Name="KnjigaID" Type="int" Nullable="false" />
+    <Property Name="DatumPosudbe" Type="date" Nullable="false" />
+    <Property Name="BrojDana" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KorisnikRadionica">
+    <Key>
+      <PropertyRef Name="KorisnikRadionicaID" />
+    </Key>
+    <Property Name="KorisnikRadionicaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KorisnikID" Type="int" Nullable="false" />
+    <Property Name="RadionicaID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Radionica">
+    <Key>
+      <PropertyRef Name="RadionicaID" />
+    </Key>
+    <Property Name="RadionicaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BrojClanova" Type="int" Nullable="false" />
+    <Property Name="Trajanje" Type="int" Nullable="false" />
+    <Property Name="DatumPocetka" Type="date" Nullable="false" />
+    <Property Name="BrojSati" Type="int" Nullable="false" />
+    <Property Name="Ponedjeljak" Type="bit" Nullable="false" />
+    <Property Name="Utorak" Type="bit" Nullable="false" />
+    <Property Name="Srijeda" Type="bit" Nullable="false" />
+    <Property Name="Cetvrtak" Type="bit" Nullable="false" />
+    <Property Name="Petak" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Zaposlenik">
+    <Key>
+      <PropertyRef Name="KorisnikID" />
+    </Key>
+    <Property Name="KorisnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Placa" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Clanarina_Korisnici">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Clan" Type="Self.Clan" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="KorisnikID" />
+      </Principal>
+      <Dependent Role="Clan">
+        <PropertyRef Name="KorisnikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KorisnikKnjiga_Knjiga">
+    <End Role="Knjiga" Type="Self.Knjiga" Multiplicity="1" />
+    <End Role="KorisnikKnjiga" Type="Self.KorisnikKnjiga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Knjiga">
+        <PropertyRef Name="KnjigaID" />
+      </Principal>
+      <Dependent Role="KorisnikKnjiga">
+        <PropertyRef Name="KnjigaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KorisnikKnjiga_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="KorisnikKnjiga" Type="Self.KorisnikKnjiga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="KorisnikID" />
+      </Principal>
+      <Dependent Role="KorisnikKnjiga">
+        <PropertyRef Name="KorisnikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KorisnikRadionica_Korisnici">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="KorisnikRadionica" Type="Self.KorisnikRadionica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="KorisnikID" />
+      </Principal>
+      <Dependent Role="KorisnikRadionica">
+        <PropertyRef Name="KorisnikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KorisnikRadionica_Radionica">
+    <End Role="Radionica" Type="Self.Radionica" Multiplicity="1" />
+    <End Role="KorisnikRadionica" Type="Self.KorisnikRadionica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Radionica">
+        <PropertyRef Name="RadionicaID" />
+      </Principal>
+      <Dependent Role="KorisnikRadionica">
+        <PropertyRef Name="RadionicaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zaposlenici_Korisnici">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="KorisnikID" />
+      </Principal>
+      <Dependent Role="Zaposlenik">
+        <PropertyRef Name="KorisnikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KnjiznicaModelStoreContainer">
+    <EntitySet Name="Clan" EntityType="Self.Clan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Knjiga" EntityType="Self.Knjiga" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KorisnikKnjiga" EntityType="Self.KorisnikKnjiga" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KorisnikRadionica" EntityType="Self.KorisnikRadionica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Radionica" EntityType="Self.Radionica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zaposlenik" EntityType="Self.Zaposlenik" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Clanarina_Korisnici" Association="Self.FK_Clanarina_Korisnici">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Clan" EntitySet="Clan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KorisnikKnjiga_Knjiga" Association="Self.FK_KorisnikKnjiga_Knjiga">
+      <End Role="Knjiga" EntitySet="Knjiga" />
+      <End Role="KorisnikKnjiga" EntitySet="KorisnikKnjiga" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KorisnikKnjiga_Korisnik" Association="Self.FK_KorisnikKnjiga_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="KorisnikKnjiga" EntitySet="KorisnikKnjiga" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KorisnikRadionica_Korisnici" Association="Self.FK_KorisnikRadionica_Korisnici">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="KorisnikRadionica" EntitySet="KorisnikRadionica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KorisnikRadionica_Radionica" Association="Self.FK_KorisnikRadionica_Radionica">
+      <End Role="Radionica" EntitySet="Radionica" />
+      <End Role="KorisnikRadionica" EntitySet="KorisnikRadionica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zaposlenici_Korisnici" Association="Self.FK_Zaposlenici_Korisnici">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

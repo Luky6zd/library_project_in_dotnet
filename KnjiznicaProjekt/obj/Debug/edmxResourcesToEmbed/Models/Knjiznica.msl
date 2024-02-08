@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KnjiznicaModelStoreContainer" CdmEntityContainer="KnjiznicaEntities">
+    <EntitySetMapping Name="Clan">
+      <EntityTypeMapping TypeName="KnjiznicaModel.Clan">
+        <MappingFragment StoreEntitySet="Clan">
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DatumUclanjivanja" ColumnName="DatumUclanjivanja" />
+          <ScalarProperty Name="DatumIsteka" ColumnName="DatumIsteka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Knjiga">
+      <EntityTypeMapping TypeName="KnjiznicaModel.Knjiga">
+        <MappingFragment StoreEntitySet="Knjiga">
+          <ScalarProperty Name="KnjigaID" ColumnName="KnjigaID" />
+          <ScalarProperty Name="Naslov" ColumnName="Naslov" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="BrojPrimjeraka" ColumnName="BrojPrimjeraka" />
+          <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+          <ScalarProperty Name="Posudba" ColumnName="Posudba" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KorisnikKnjiga">
+      <EntityTypeMapping TypeName="KnjiznicaModel.KorisnikKnjiga">
+        <MappingFragment StoreEntitySet="KorisnikKnjiga">
+          <ScalarProperty Name="KorisnikKnjigaID" ColumnName="KorisnikKnjigaID" />
+          <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+          <ScalarProperty Name="KnjigaID" ColumnName="KnjigaID" />
+          <ScalarProperty Name="DatumPosudbe" ColumnName="DatumPosudbe" />
+          <ScalarProperty Name="BrojDana" ColumnName="BrojDana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KorisnikRadionica">
+      <EntityTypeMapping TypeName="KnjiznicaModel.KorisnikRadionica">
+        <MappingFragment StoreEntitySet="KorisnikRadionica">
+          <ScalarProperty Name="KorisnikRadionicaID" ColumnName="KorisnikRadionicaID" />
+          <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+          <ScalarProperty Name="RadionicaID" ColumnName="RadionicaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Radionica">
+      <EntityTypeMapping TypeName="KnjiznicaModel.Radionica">
+        <MappingFragment StoreEntitySet="Radionica">
+          <ScalarProperty Name="RadionicaID" ColumnName="RadionicaID" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="BrojClanova" ColumnName="BrojClanova" />
+          <ScalarProperty Name="Trajanje" ColumnName="Trajanje" />
+          <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+          <ScalarProperty Name="BrojSati" ColumnName="BrojSati" />
+          <ScalarProperty Name="Ponedjeljak" ColumnName="Ponedjeljak" />
+          <ScalarProperty Name="Utorak" ColumnName="Utorak" />
+          <ScalarProperty Name="Srijeda" ColumnName="Srijeda" />
+          <ScalarProperty Name="Cetvrtak" ColumnName="Cetvrtak" />
+          <ScalarProperty Name="Petak" ColumnName="Petak" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zaposlenik">
+      <EntityTypeMapping TypeName="KnjiznicaModel.Zaposlenik">
+        <MappingFragment StoreEntitySet="Zaposlenik">
+          <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Korisnik">
+      <EntityTypeMapping TypeName="KnjiznicaModel.Korisnik">
+        <MappingFragment StoreEntitySet="Korisnik">
+          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="BrojIskaznice" ColumnName="BrojIskaznice" />
+          <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+          <ScalarProperty Name="BrojKnjiga" ColumnName="BrojKnjiga" />
+          <ScalarProperty Name="StatusKorisnika" ColumnName="StatusKorisnika" />
+          <ScalarProperty Name="Spol" ColumnName="Spol" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DatumRodenja" ColumnName="DatumRodenja" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KnjiznicaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
